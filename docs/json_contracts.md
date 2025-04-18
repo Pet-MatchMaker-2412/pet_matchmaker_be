@@ -4,18 +4,26 @@
 
 ### Recommended Animals
 
-#### GET /api/v1/recommended_animals/:id
+#### GET /api/v1/petfinder_animals
 
 response:
 
 ```json
 {
   "data": {
-    "type": "recommended_animal",
+    "type": "petfinder_animal",
     "id": 1,
     "attributes": {
-      "name": "dachshund",
-      "photo url": "https://photo.com/dachshund_photo"
+      "name": "Spot",
+      "photo_url": "https://photos.petfinder.com/photos/pets/42706540/1/?bust=1546042081",
+      "age": "Young",
+      "gender": "Male",
+      "size": "Medium",
+      "species": "Dog",
+      "city": "Jersey City",
+      "state": "NJ",
+      "description": "Spot is an amazing dog",
+      "email": "petfindertechsupport@gmail.com"
     }
   }
 }
@@ -71,6 +79,40 @@ response:
               "attributes": {
                 "text": "answer"
               }
+            },
+            {
+              "id": 2,
+              "type": "answer",
+              "attributes": {
+                "text": "answer2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "question",
+      "id": 2,
+      "attributes": {
+        "text": "question2?",
+      },
+      "relationships": {
+        "answers": {
+          "data": [
+            {
+              "id": 3,
+              "type": "answer",
+              "attributes": {
+                "text": "answer3"
+              }
+            },
+            {
+              "id": 4,
+              "type": "answer",
+              "attributes": {
+                "text": "answer4"
+              }
             }
           ]
         }
@@ -113,6 +155,16 @@ response:
             }
           }
         ]
+      },
+      "recommended_animal": {
+        "data": {
+          "type": "recommended_animal",
+          "id": 1,
+          "attributes": {
+            "type": "dachshund",
+            "photo_url": "https://photos.com/dachshund"
+          }
+        }
       }
     }
   }
@@ -143,6 +195,16 @@ response:
               }
             }
           ]
+        }
+      },
+      "recommended_animal": {
+        "data": {
+          "type": "recommended_animal",
+          "id": 1,
+          "attributes": {
+            "type": "dachshund",
+            "photo_url": "https://photos.com/dachshund"
+          }
         }
       }
     }
