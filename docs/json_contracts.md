@@ -79,6 +79,40 @@ response:
               "attributes": {
                 "text": "answer"
               }
+            },
+            {
+              "id": 2,
+              "type": "answer",
+              "attributes": {
+                "text": "answer2"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "question",
+      "id": 2,
+      "attributes": {
+        "text": "question2?",
+      },
+      "relationships": {
+        "answers": {
+          "data": [
+            {
+              "id": 3,
+              "type": "answer",
+              "attributes": {
+                "text": "answer3"
+              }
+            },
+            {
+              "id": 4,
+              "type": "answer",
+              "attributes": {
+                "text": "answer4"
+              }
             }
           ]
         }
