@@ -6,6 +6,15 @@
 
 #### GET /api/v1/petfinder_animals
 
+request:
+
+```json
+{
+  "recommended_animal_id": 1,
+  "zipcode": "07097"
+}
+```
+
 response:
 
 ```json
