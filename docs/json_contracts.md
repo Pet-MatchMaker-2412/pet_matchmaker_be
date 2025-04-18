@@ -155,6 +155,16 @@ response:
             }
           }
         ]
+      },
+      "recommended_animal": {
+        "data": {
+          "type": "recommended_animal",
+          "id": 1,
+          "attributes": {
+            "type": "dachshund",
+            "photo_url": "https://photos.com/dachshund"
+          }
+        }
       }
     }
   }
@@ -185,6 +195,16 @@ response:
               }
             }
           ]
+        }
+      },
+      "recommended_animal": {
+        "data": {
+          "type": "recommended_animal",
+          "id": 1,
+          "attributes": {
+            "type": "dachshund",
+            "photo_url": "https://photos.com/dachshund"
+          }
         }
       }
     }
