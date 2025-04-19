@@ -1,12 +1,25 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+q1 = Question.create!(text: "How active is your lifestyle?")
+q2 = Question.create!(text: "Do you live in a house or an apartment?")
+q3 = Question.create!(text: "How much time can you devote to a pet daily?")
+q4 = Question.create!(text: "Do you have children or other pets?")
+q5 = Question.create!(text: "Why do you want a pet?")
+q6 = Question.create!(text: "How often do you travel?")
+q7 = Question.create!(text: "What is your monthly budget for a pet?")
+q8 = Question.create!(text: "How comfortable are you with grooming and cleanup?")
+q9 = Question.create!(text: "What's your daily schedule like?")
+q10 = Question.create!(text: "What kind of temperament are you looking for in a pet?")
 
 
-puts "I am SEEDED🌱!"
+
+
+
+
+
+
+
+
+
+
+
+
+
