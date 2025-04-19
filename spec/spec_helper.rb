@@ -92,3 +92,4 @@ RSpec.configure do |config|
   #   Kernel.srand config.seed
 end
 require "webmock/rspec"
+require "faker"
