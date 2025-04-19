@@ -1,0 +1,2 @@
+class RecommendedAnimal < ApplicationRecord
+end
