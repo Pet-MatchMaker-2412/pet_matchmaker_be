@@ -44,25 +44,31 @@ a10_b = Answer.create!(question: q10, text: "Playful and energetic")
 a10_c = Answer.create!(question: q10, text: "Independent")
 a10_d = Answer.create!(question: q10, text: "Affectionate and cuddly")
 
-golden_retriever = RecommendedAnimal.create!(type: "golden_retriever")
-corgi = RecommendedAnimal.create!(type: "corgi")
-border_collie = RecommendedAnimal.create!(type: "border_collie")
-mastiff = RecommendedAnimal.create!(type: "mastiff")
-dachshund = RecommendedAnimal.create!(type: "dachshund")
-basset_hound = RecommendedAnimal.create!(type: "golden_retriever")
-cat = RecommendedAnimal.create!(type: "cat")
-small_mammal = RecommendedAnimal.create!(type: "small_mammal")
-bird = RecommendedAnimal.create!(type: "bird")
-amphibian_fish_reptile = RecommendedAnimal.create!(type: "amphibian_fish_reptile")
-tamagotchi = RecommendedAnimal.create!(type: "tamagotchi")
+golden_retriever = RecommendedAnimal.create!(animal_type: "golden_retriever")
+corgi = RecommendedAnimal.create!(animal_type: "corgi")
+border_collie = RecommendedAnimal.create!(animal_type: "border_collie")
+mastiff = RecommendedAnimal.create!(animal_type: "mastiff")
+dachshund = RecommendedAnimal.create!(animal_type: "dachshund")
+basset_hound = RecommendedAnimal.create!(animal_type: "basset_hound")
+cat = RecommendedAnimal.create!(animal_type: "cat")
+small_mammal = RecommendedAnimal.create!(animal_type: "small_mammal")
+bird = RecommendedAnimal.create!(animal_type: "bird")
+amphibian_fish_reptile = RecommendedAnimal.create!(animal_type: "amphibian_fish_reptile")
+tamagotchi = RecommendedAnimal.create!(animal_type: "tamagotchi")
 
-
-
-
-
-
-
-
-
-
-
+a1_a.recommended_animals_weights.create!(recommended_animal: golden_retriever, weight: 0.25)
+a1_a.recommended_animals_weights.create!(recommended_animal: corgi, weight: 0.25)
+a1_a.recommended_animals_weights.create!(recommended_animal: border_collie, weight: 0.25)
+a1_a.recommended_animals_weights.create!(recommended_animal: bird, weight: 0.25)
+a1_b.recommended_animals_weights.create!(recommended_animal: dachshund, weight: 0.25)
+a1_b.recommended_animals_weights.create!(recommended_animal: mastiff, weight: 0.25)
+a1_b.recommended_animals_weights.create!(recommended_animal: basset_hound, weight: 0.25)
+a1_b.recommended_animals_weights.create!(recommended_animal: bird, weight: 0.25)
+a1_c.recommended_animals_weights.create!(recommended_animal: cat, weight: 0.33)
+a1_c.recommended_animals_weights.create!(recommended_animal: small_mammal, weight: 0.33)
+a1_c.recommended_animals_weights.create!(recommended_animal: amphibian_fish_reptile, weight: 0.33)
+a2_a.recommended_animals_weights.create!(recommended_animal: golden_retriever, weight: 0.20)
+a2_a.recommended_animals_weights.create!(recommended_animal: corgi, weight: 0.20)
+a2_a.recommended_animals_weights.create!(recommended_animal: border_collie, weight: 0.20)
+a2_a.recommended_animals_weights.create!(recommended_animal: bird, weight: 0.20)
+a2_a.recommended_animals_weights.create!(recommended_animal: mastiff, weight: 0.20)
