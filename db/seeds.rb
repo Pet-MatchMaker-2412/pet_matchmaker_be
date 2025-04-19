@@ -44,7 +44,17 @@ a10_b = Answer.create!(question: q10, text: "Playful and energetic")
 a10_c = Answer.create!(question: q10, text: "Independent")
 a10_d = Answer.create!(question: q10, text: "Affectionate and cuddly")
 
-
+golden_retriever = RecommendedAnimal.create!(type: "golden_retriever")
+corgi = RecommendedAnimal.create!(type: "corgi")
+border_collie = RecommendedAnimal.create!(type: "border_collie")
+mastiff = RecommendedAnimal.create!(type: "mastiff")
+dachshund = RecommendedAnimal.create!(type: "dachshund")
+basset_hound = RecommendedAnimal.create!(type: "golden_retriever")
+cat = RecommendedAnimal.create!(type: "cat")
+small_mammal = RecommendedAnimal.create!(type: "small_mammal")
+bird = RecommendedAnimal.create!(type: "bird")
+amphibian_fish_reptile = RecommendedAnimal.create!(type: "amphibian_fish_reptile")
+tamagotchi = RecommendedAnimal.create!(type: "tamagotchi")
 
 
 
