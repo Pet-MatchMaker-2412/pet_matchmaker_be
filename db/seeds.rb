@@ -1,3 +1,13 @@
+RecommendedAnimalsWeight.destroy_all
+Answer.destroy_all
+Question.destroy_all
+RecommendedAnimal.destroy_all
+
+ActiveRecord::Base.connection.reset_pk_sequence!("recommended_animals_weights")
+ActiveRecord::Base.connection.reset_pk_sequence!("answers")
+ActiveRecord::Base.connection.reset_pk_sequence!("questions")
+ActiveRecord::Base.connection.reset_pk_sequence!("recommended_animals")
+
 q1 = Question.create!(text: "How active is your lifestyle?")
 q2 = Question.create!(text: "Do you live in a house or an apartment?")
 q3 = Question.create!(text: "How much time can you devote to a pet daily?")
