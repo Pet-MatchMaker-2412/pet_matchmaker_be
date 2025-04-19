@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :questionnaire_submission do
-    user { nil }
+    user
+    recommended_animal
   end
 end
