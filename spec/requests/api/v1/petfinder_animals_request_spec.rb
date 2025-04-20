@@ -8,7 +8,7 @@ RSpec.describe "Petfinder Animals API", type: :request do
 
     let(:animal_params) do
       {
-        recommended_animal_id: 1,
+        recommended_animal_id: RecommendedAnimal.all.sample.id,
         zipcode: "07097"
       }
     end
