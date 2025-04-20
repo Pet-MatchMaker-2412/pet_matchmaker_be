@@ -2,15 +2,15 @@
 
 1. **How active is your lifestyle?**
     
-    - very active (hiking, running daily)
+    - Very active (hiking, running daily)
         
         - `{golden_retriever: 0.25, corgi: 0.25, border_collie: 0.25, bird: 0.25}`
             
-    - moderately active (walks, occasional activity)
+    - Moderately active (walks, occasional activity)
         
         - `{dachshund: 0.25, mastiff: 0.25, basset_hound: 0.25, bird: 0.25}`
             
-    - not very active (sedentary, homebody)
+    - Not very active (sedentary, homebody)
         
         - `{cat: 0.33, small_mammal: 0.33, amphibian_fish_reptile: 0.33}`
             

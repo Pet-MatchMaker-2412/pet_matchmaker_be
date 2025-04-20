@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_19_012344) do
   end
 
   create_table "recommended_animals", force: :cascade do |t|
-    t.string "type"
+    t.string "animal_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
