@@ -33,7 +33,22 @@ RSpec.describe "Questions API", type: :request do
     end
 
     context "with invalid request" do
-      it 
+      it "returns 404 for an invalid endpoint" do
+        get "/api/v1/questionz"
+      
+        expect(response.status).to eq(404)
+      end
+    end
+
+    context "with empty database" do 
+      Question.destroy_all 
+      it "returns an empty array if there are no questions" do 
+        get "api/v1/questions"
+
+        expect(response).to be_successful
+        json = JSON.parse(response.body, symbolize_names: true)
+        expect(json[:data]).to eq([])
+      end
     end
   end 
 end
