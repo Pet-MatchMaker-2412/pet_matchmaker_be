@@ -43,12 +43,13 @@ RSpec.describe "Questions API", type: :request do
     context "with empty database" do 
       it "returns an empty array if there are no questions" do 
         Question.destroy_all 
-        
+
         get "api/v1/questions"
 
         expect(response).to be_successful
         json = JSON.parse(response.body, symbolize_names: true)
         expect(json[:data]).to eq([])
+        expect(json[:message]).to eq("No questions available at this time.")
       end
     end
   end 
