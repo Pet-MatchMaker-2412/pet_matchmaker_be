@@ -15,7 +15,7 @@ RSpec.describe "Petfinder Animals API", type: :request do
 
     context "with valid request" do
       it "returns 200 and provides expected fields" do
-        get api_v1_petfinder_animals_path, params: animal_params, as: :json
+        get api_v1_petfinder_animals_path, params: animal_params
 
         expect(response).to have_http_status(:ok)
         json = JSON.parse(response.body, symbolize_names: true)
@@ -43,7 +43,7 @@ RSpec.describe "Petfinder Animals API", type: :request do
       it "returns 422 for missing recommended_animal_id" do
         animal_params[:recommended_animal_id] = nil
 
-        get api_v1_petfinder_animals_path, params: animal_params, as: :json
+        get api_v1_petfinder_animals_path, params: animal_params
 
         json = JSON.parse(response.body, symbolize_names: true)
 
@@ -55,7 +55,7 @@ RSpec.describe "Petfinder Animals API", type: :request do
       it "returns 422 for missing zipcode" do
         animal_params[:zipcode] = nil
 
-        get api_v1_petfinder_animals_path, params: animal_params, as: :json
+        get api_v1_petfinder_animals_path, params: animal_params
 
         json = JSON.parse(response.body, symbolize_names: true)
 
@@ -67,7 +67,7 @@ RSpec.describe "Petfinder Animals API", type: :request do
       it "returns 422 for invalid zipcode" do
         animal_params[:zipcode] = "34"
 
-        get api_v1_petfinder_animals_path, params: animal_params, as: :json
+        get api_v1_petfinder_animals_path, params: animal_params
 
         json = JSON.parse(response.body, symbolize_names: true)
 
@@ -79,7 +79,7 @@ RSpec.describe "Petfinder Animals API", type: :request do
       it "returns 422 for invalid recommended animal id" do
         animal_params[:recommended_animal_id] = 1_000_000
 
-        get api_v1_petfinder_animals_path, params: animal_params, as: :json
+        get api_v1_petfinder_animals_path, params: animal_params
 
         json = JSON.parse(response.body, symbolize_names: true)
 
