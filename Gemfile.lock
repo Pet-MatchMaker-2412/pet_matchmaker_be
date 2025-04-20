@@ -344,6 +344,8 @@ GEM
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
     uri (1.0.3)
+    validates_zipcode (0.5.3)
+      activemodel (>= 4.2.0)
     vcr (6.3.1)
       base64
     webmock (3.25.1)
@@ -388,6 +390,7 @@ DEPENDENCIES
   standard-rails
   standard-rspec
   tzinfo-data
+  validates_zipcode
   vcr
   webmock
 
