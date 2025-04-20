@@ -5,7 +5,7 @@ class Api::V1::QuestionsController < ApplicationController
     if questions.empty?
       render json: { data: [], message: "No questions available at this time." }, status: :ok
     else
-      render json: QuestionsSerializer.new(questions), status: :ok
+      render json: QuestionSerializer.new(questions), status: :ok
     end
   end
 end
