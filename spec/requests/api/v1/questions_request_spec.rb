@@ -41,8 +41,9 @@ RSpec.describe "Questions API", type: :request do
     end
 
     context "with empty database" do 
-      Question.destroy_all 
       it "returns an empty array if there are no questions" do 
+        Question.destroy_all 
+        
         get "api/v1/questions"
 
         expect(response).to be_successful
