@@ -21,11 +21,14 @@ RSpec.describe "Questions API", type: :request do
           expect(question).to have_key(:id)
           expect(question[:type]).to eq("question")
           expect(question[:attributes]).to have_key(:text)
-          expect(question[:relationships][:answers][:data]).count.to eq(3)
+          expect(question[:attributes]).to have_key(:answers)
 
-          question[:relationships][:answers][:data].each do |answer|
+          answers = question[:attributes][:answers]
+          expect(answers.count).to eq(3)
+
+          answers.each do |answer|
             expect(answer[:type]).to eq("answer")
-            expect(answer[:attributes].to have_key(:text))
+            expect(answer[:attributes]).to have_key(:text)
             expect(answer[:id]).to be_a(String)
           end
         end
@@ -34,9 +37,9 @@ RSpec.describe "Questions API", type: :request do
 
     context "with invalid request" do
       it "returns 404 for an invalid endpoint" do
-        get "/api/v1/questionz"
-      
-        expect(response.status).to eq(404)
+        expect {
+          get "/api/v1/questionz"
+        }.to raise_error(ActionController::RoutingError)
       end
     end
 
@@ -44,7 +47,7 @@ RSpec.describe "Questions API", type: :request do
       it "returns an empty array if there are no questions" do 
         Question.destroy_all 
 
-        get "api/v1/questions"
+        get "/api/v1/questions"
 
         expect(response).to be_successful
         json = JSON.parse(response.body, symbolize_names: true)
