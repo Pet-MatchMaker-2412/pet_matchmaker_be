@@ -15,10 +15,18 @@ RSpec.describe "GET /api/v1/users/:user_id/questionnaire_submissions", type: :re
         expect(response).to be_successful
         expect(response.status).to eq(200)
 
-        json = JSON.parse(response.body, symbolize_names: true)[:data]
+        questionnaire_submissions = JSON.parse(response.body, symbolize_names: true)[:data]
         
-        expect(json).to be_an(Array)
-        expect(json.count).to eq(3)
+        expect(questionnaire_submissions).to be_an(Array)
+        expect(questionnaire_submissions.count).to eq(3)
+
+        questionnaire_submissions.each do |submission|
+          expect(submission).to have_key(:id)
+          expect(submission).to have_key(:type)
+          expect(submission[:type]).to eq("questionnaire_submissions")
+          expect(submission[:attributes]).to have_key(:recommended_animal_id)
+          expect(submission[:attributes][:user_id]).to eq(user.id)
+        end
       end
     end
   end
