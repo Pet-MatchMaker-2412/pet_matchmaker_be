@@ -11,7 +11,7 @@ RSpec.describe "GET /api/v1/users/:user_id/questionnaire_submissions", type: :re
 
       it "returns a list of the user's questionnaire submissions" do
         get api_v1_user_questionnaire_submissions_path(user.id)
-require 'pry'; binding.pry
+
         expect(response).to be_successful
         expect(response.status).to eq(200)
       end
