@@ -6,11 +6,14 @@ RSpec.describe "GET /api/v1/users/:user_id/questionnaire_submissions", type: :re
   describe "Happy Path" do
     context "when the user has questionnaire submissions" do
       before do
-        create_list(:questionnaire_submission, 3, user: user)
+        @submissions = create_list(:questionnaire_submission, 3, user: user)
       end
 
       it "returns a list of the user's questionnaire submissions" do
         get api_v1_user_questionnaire_submissions_path(user.id)
+
+        expect(response).to be_successful
+        expect(response.status).to eq(200)
       end
     end
   end
