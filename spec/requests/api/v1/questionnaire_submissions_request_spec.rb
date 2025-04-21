@@ -11,13 +11,13 @@ RSpec.describe "GET /api/v1/users/:user_id/questionnaire_submissions", type: :re
 
       it "returns a list of the user's questionnaire submissions" do
         get api_v1_user_questionnaire_submissions_path(user.id)
-require 'pry'; binding.pry
+
         expect(response).to be_successful
         expect(response.status).to eq(200)
-require 'pry'; binding.pry
-        json = JSON.parse(response.body, symbolize_names: true)
-        expect
 
+        json = JSON.parse(response.body, symbolize_names: true)[:data]
+        
+        expect(json).to be_an(Array)
       end
     end
   end
