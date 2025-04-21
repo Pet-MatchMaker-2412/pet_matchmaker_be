@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe "GET /api/v1/users/:user_id/questionnaire_submissions", type: :request do
   let(:user) { create(:user) }
-  require 'pry'; binding.pry
   describe "Happy Path" do
     context "when the user has questionnaire submissions" do
       before do 

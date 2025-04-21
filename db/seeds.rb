@@ -175,3 +175,5 @@ a10_d.recommended_animals_weights.find_or_create_by!(recommended_animal: cat, we
 a10_d.recommended_animals_weights.find_or_create_by!(recommended_animal: small_mammal, weight: 0.16)
 a10_d.recommended_animals_weights.find_or_create_by!(recommended_animal: basset_hound, weight: 0.16)
 a10_d.recommended_animals_weights.find_or_create_by!(recommended_animal: corgi, weight: 0.16)
+
+puts "I am seeded 🌱 PetFinders!"
