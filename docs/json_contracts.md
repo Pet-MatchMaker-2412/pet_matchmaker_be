@@ -22,7 +22,7 @@ response:
   "data": [
     {
       "type": "petfinder_animal",
-      "id": 1,
+      "id": "1",
       "attributes": {
         "name": "Spot",
         "photo_url": "https://photos.petfinder.com/photos/pets/42706540/1/?bust=1546042081",
@@ -35,7 +35,7 @@ response:
         "description": "Spot is an amazing dog",
         "email": "petfindertechsupport@gmail.com"
       }
-    }, ...
+    }
   ]
 }
 ```
@@ -58,7 +58,7 @@ response:
 {
   "data": {
     "type": "user",
-    "id": 1,
+    "id": "1",
     "attributes": {
       "username": "something_unique"
     }
@@ -77,20 +77,18 @@ response:
   "data": [
     {
       "type": "question",
-      "id": 1,
+      "id": "1",
       "attributes": {
         "text": "question?",
-        "answers": {
-          "data": [
-            {
-              "id": 1,
-              "type": "answer",
-              "attributes": {
-                "text": "answer"
-              }
+        "answers": [
+          {
+            "id": "1",
+            "type": "answer",
+            "attributes": {
+              "text": "answer"
             }
-          ]
-        }
+          }
+        ]
       }
     }
   ]
@@ -105,7 +103,7 @@ body:
 
 ```json
 {
-  "answer_ids": [1, 4, 6 ...]
+  "answer_ids": [1, 4, 6]
 }
 ```
 
@@ -115,30 +113,24 @@ response:
 {
   "data": {
     "type": "questionnaire_submission",
-    "id": 1,
+    "id": "1",
     "attributes": {
-      "recommended_pet_id": 1,
-    },
-    "relationships": {
-      "submission_answers": {
-        "data": [
-          {
-            "id": 1,
-            "type": "submission_answer",
-            "attributes": {
-              "answer_id": 1
-            }
-          }, ...
-        ]
-      },
-      "recommended_animal": {
-        "data": {
-          "type": "recommended_animal",
-          "id": 1,
+      "recommended_pet_id": "1",
+      "submission_answers": [
+        {
+          "id": "1",
+          "type": "submission_answer",
           "attributes": {
-            "type": "dachshund",
-            "photo_url": "https://photos.com/dachshund"
+            "answer_id": "1"
           }
+        }
+      ],
+      "recommended_animal": {
+        "type": "recommended_animal",
+        "id": "1",
+        "attributes": {
+          "type": "dachshund",
+          "photo_url": "https://photos.com/dachshund"
         }
       }
     }
@@ -158,22 +150,16 @@ response:
       "id": 1,
       "attributes": {
         "recommended_pet_id": 1,
-      },
-      "relationships": {
-        "submission_answers": {
-          "data": [
-            {
-              "id": 1,
-              "type": "submission_answer",
-              "attributes": {
-                "answer_id": 1
-              }
-            }, ...
-          ]
-        }
-      },
-      "recommended_animal": {
-        "data": {
+        "submission_answers": [
+          {
+            "id": 1,
+            "type": "submission_answer",
+            "attributes": {
+              "answer_id": 1
+            }
+          }
+        ],
+        "recommended_animal": {
           "type": "recommended_animal",
           "id": 1,
           "attributes": {
@@ -182,7 +168,7 @@ response:
           }
         }
       }
-    }, ...
+    }
   ]
 }
 ```
