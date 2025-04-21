@@ -6,6 +6,7 @@ RSpec.describe "GET /api/v1/users/:user_id/questionnaire_submissions", type: :re
     context "when the user has questionnaire submissions" do
       before do 
         create_list(:questionnaire_submission, 3, user: user)
+        require 'pry'; binding.pry
       end
 
       it "returns a list of the users questionnaire submissions" do
