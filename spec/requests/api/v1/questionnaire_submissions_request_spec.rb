@@ -16,7 +16,6 @@ RSpec.describe "GET /api/v1/users/:user_id/questionnaire_submissions", type: :re
         expect(response.status).to eq(200)
 
         json = JSON.parse(response.body, symbolize_names: true)
-
         expect
 
       end
