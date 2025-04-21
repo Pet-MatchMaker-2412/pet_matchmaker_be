@@ -42,6 +42,22 @@ response:
 
 ### Users
 
+#### GET /api/v1/users/:id
+
+response:
+
+```json
+{
+  "data": {
+    "type": "user",
+    "id": "1",
+    "attributes": {
+      "username": "something_unique"
+    }
+  }
+}
+```
+
 #### POST /api/v1/users
 
 body:
