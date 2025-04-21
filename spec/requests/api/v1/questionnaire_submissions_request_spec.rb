@@ -34,7 +34,29 @@ RSpec.describe "GET /api/v1/users/:user_id/questionnaire_submissions", type: :re
           expect(submission[:relationships][:recommended_animal][:data][:type]).to eq("recommended_animal")
 
           expect(submission[:relationships][:submission_answers][:data]).to be_an(Array)
+
+          submission[:relationships][:submission_answers][:data].each do |answer|
+            expect(answer).to have_key(:id)
+            expect(answer).to have_key(:type)
+            expect(answer[:type]).to eq("submission_answer")
+          end
         end
+      end
+    end
+  end
+
+  describe "Sad Path" do
+    context "when the user does not exist" do
+      it "returns a 404 with an error message" do
+        get api_v1_user_questionnaire_submissions_path(-1) 
+        
+        expect(response).not_to be_successful
+        expect(response.status).to eq(404)
+
+        error = JSON.parse(response.body, symbolize_names: true)
+
+        expect(error).to have_key(:error)
+        expect(error[:error]).to eq("User not found")
       end
     end
   end
