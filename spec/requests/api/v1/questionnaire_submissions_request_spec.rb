@@ -26,6 +26,14 @@ RSpec.describe "GET /api/v1/users/:user_id/questionnaire_submissions", type: :re
           expect(submission[:type]).to eq("questionnaire_submissions")
           expect(submission[:attributes]).to have_key(:recommended_animal_id)
           expect(submission[:attributes][:user_id]).to eq(user.id)
+
+          expect(submission[:relationships]).to have_key(:submission_answers)
+          expect(submission[:relationships]).to have_key(:recommended_animal)
+
+          expect(submission[:relationships][:recommended_animal][:data]).to have_key(:id)
+          expect(submission[:relationships][:recommended_animal][:data][:type]).to eq("recommended_animal")
+
+          expect(submission[:relationships][:submission_answers][:data]).to be_an(Array)
         end
       end
     end
