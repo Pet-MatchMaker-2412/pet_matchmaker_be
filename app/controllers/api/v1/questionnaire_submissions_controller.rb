@@ -4,10 +4,8 @@ class Api::V1::QuestionnaireSubmissionsController < ApplicationController
     
     if user
       submissions = user.questionnaire_submissions.includes(:submission_answers, :recommended_animal)
-      require 'pry'; binding.pry
-      render json: QuestionnaireSubmissionsSerializer.new(submissions,), status: :ok
-      
-      # submissions, include: [:submission_answers, :recommended_animal], status: :ok 
+
+      render json: QuestionnaireSubmissionsSerializer.new(submissions, include: [:submission_answers, :recommended_animal]), status: :ok
     else
       render json: { error: "User not found" }, status: :not_found
     end
