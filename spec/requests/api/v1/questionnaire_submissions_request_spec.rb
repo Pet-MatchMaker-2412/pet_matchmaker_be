@@ -18,6 +18,7 @@ RSpec.describe "GET /api/v1/users/:user_id/questionnaire_submissions", type: :re
         json = JSON.parse(response.body, symbolize_names: true)[:data]
         
         expect(json).to be_an(Array)
+        expect(json.count).to eq(3)
       end
     end
   end
