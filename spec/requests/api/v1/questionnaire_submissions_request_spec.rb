@@ -49,7 +49,7 @@ RSpec.describe "GET /api/v1/users/:user_id/questionnaire_submissions", type: :re
     context "when the user does not exist" do
       it "returns a 404 with an error message" do
         get api_v1_user_questionnaire_submissions_path(-1) 
-        
+
         expect(response).not_to be_successful
         expect(response.status).to eq(404)
 
