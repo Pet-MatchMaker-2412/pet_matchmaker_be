@@ -42,7 +42,15 @@ response:
 
 ### Users
 
-#### GET /api/v1/users/:id
+#### GET /api/v1/users
+
+body:
+
+```json
+{
+  "username": "something_unique"
+}
+```
 
 response:
 
