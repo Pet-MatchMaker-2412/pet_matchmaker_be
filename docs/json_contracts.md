@@ -80,8 +80,6 @@ response:
       "id": 1,
       "attributes": {
         "text": "question?",
-      },
-      "relationships": {
         "answers": {
           "data": [
             {
@@ -90,11 +88,11 @@ response:
               "attributes": {
                 "text": "answer"
               }
-            }, ...
+            }
           ]
         }
       }
-    }, ...
+    }
   ]
 }
 ```
