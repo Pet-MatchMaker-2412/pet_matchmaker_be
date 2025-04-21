@@ -2,15 +2,15 @@ require "rails_helper"
 
 RSpec.describe "GET /api/v1/users/:user_id/questionnaire_submissions", type: :request do
   let(:user) { create(:user) }
+
   describe "Happy Path" do
     context "when the user has questionnaire submissions" do
-      before do 
+      before do
         create_list(:questionnaire_submission, 3, user: user)
-        require 'pry'; binding.pry
       end
 
-      it "returns a list of the users questionnaire submissions" do
-        get api_v1_users_questionnaire_submissions_path(user.id)
+      it "returns a list of the user's questionnaire submissions" do
+        get api_v1_user_questionnaire_submissions_path(user.id)
       end
     end
   end
