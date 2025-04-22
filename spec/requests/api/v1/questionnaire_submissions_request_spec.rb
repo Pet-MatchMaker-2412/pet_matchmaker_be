@@ -36,7 +36,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
           expect(attributes[:recommended_animal][:data][:type]).to eq("recommended_animal")
           expect(attributes[:recommended_animal][:data][:id]).to be_a String
           expect(attributes[:recommended_animal][:data][:attributes][:animal_type]).to be_a String
-          # expect(attributes[:recommended_animal][:data][:attributes][:photo_url]).to be_a String
+          expect(attributes[:recommended_animal][:data][:attributes][:photo_url]).to be_a String
         end
       end
     end
