@@ -83,9 +83,9 @@ RSpec.describe "Petfinder Animals API", type: :request do
 
         json = JSON.parse(response.body, symbolize_names: true)
 
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(json[:message]).to eq("Invalid Recommended Animal ID")
-        expect(json[:status]).to eq(422)
+        expect(response).to have_http_status(:not_found)
+        expect(json[:message]).to eq("Couldn't find RecommendedAnimal with 'id'=1000000")
+        expect(json[:status]).to eq(404)
       end
     end
   end
