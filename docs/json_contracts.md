@@ -153,7 +153,7 @@ response:
         "type": "recommended_animal",
         "id": "1",
         "attributes": {
-          "type": "dachshund",
+          "animal_type": "dachshund",
           "photo_url": "https://photos.com/dachshund"
         }
       }
@@ -187,7 +187,7 @@ response:
           "type": "recommended_animal",
           "id": "1",
           "attributes": {
-            "type": "dachshund",
+            "animal_type": "dachshund",
             "photo_url": "https://photos.com/dachshund"
           }
         }
