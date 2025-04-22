@@ -139,7 +139,7 @@ response:
     "type": "questionnaire_submission",
     "id": "1",
     "attributes": {
-      "recommended_pet_id": "1",
+      "recommended_animal_id": "1",
       "submission_answers": [
         {
           "id": "1",
@@ -173,7 +173,7 @@ response:
       "type": "questionnaire_submission",
       "id": 1,
       "attributes": {
-        "recommended_pet_id": 1,
+        "recommended_animal_id": 1,
         "submission_answers": [
           {
             "id": 1,
