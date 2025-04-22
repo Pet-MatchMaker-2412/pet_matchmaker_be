@@ -139,22 +139,25 @@ response:
     "type": "questionnaire_submission",
     "id": "1",
     "attributes": {
-      "recommended_pet_id": "1",
-      "submission_answers": [
-        {
-          "id": "1",
-          "type": "submission_answer",
-          "attributes": {
-            "answer_id": "1"
+      "submission_answers": {
+        "data": [
+          {
+            "id": "1",
+            "type": "submission_answer",
+            "attributes": {
+              "answer_id": "1"
+            }
           }
-        }
-      ],
+        ]
+      },
       "recommended_animal": {
-        "type": "recommended_animal",
-        "id": "1",
-        "attributes": {
-          "type": "dachshund",
-          "photo_url": "https://photos.com/dachshund"
+        "data": {
+          "type": "recommended_animal",
+          "id": "1",
+          "attributes": {
+            "animal_type": "dachshund",
+            "photo_url": "https://photos.com/dachshund"
+          }
         }
       }
     }
@@ -171,24 +174,27 @@ response:
   "data": [
     {
       "type": "questionnaire_submission",
-      "id": 1,
+      "id": "1",
       "attributes": {
-        "recommended_pet_id": 1,
-        "submission_answers": [
-          {
-            "id": 1,
-            "type": "submission_answer",
-            "attributes": {
-              "answer_id": 1
+        "submission_answers": {
+          "data": [
+            {
+              "id": "1",
+              "type": "submission_answer",
+              "attributes": {
+                "text": "answer"
+              }
             }
-          }
-        ],
+          ]
+        },
         "recommended_animal": {
-          "type": "recommended_animal",
-          "id": 1,
-          "attributes": {
-            "type": "dachshund",
-            "photo_url": "https://photos.com/dachshund"
+          "data": {
+            "type": "recommended_animal",
+            "id": "1",
+            "attributes": {
+              "animal_type": "dachshund",
+              "photo_url": "https://photos.com/dachshund"
+            }
           }
         }
       }
