@@ -30,7 +30,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
           attributes[:submission_answers][:data].each do |answer|
             expect(answer[:id]).to be_a String
             expect(answer[:type]).to eq("submission_answer")
-            expect(answer[:attributes][:answer_id]).to be_an Integer
+            expect(answer[:attributes][:text]).to be_a String
           end
 
           expect(attributes[:recommended_animal][:data][:type]).to eq("recommended_animal")

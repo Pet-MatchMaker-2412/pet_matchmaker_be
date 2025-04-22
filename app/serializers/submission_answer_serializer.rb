@@ -1,5 +1,7 @@
 class SubmissionAnswerSerializer
   include JSONAPI::Serializer
 
-  attributes :answer_id
+  attribute :text do |sub_answer|
+    sub_answer.answer.text
+  end
 end
