@@ -48,7 +48,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
         json = JSON.parse(response.body, symbolize_names: true)
 
         expect(response).to have_http_status(:not_found)
-        expect(json[:message]).to eq("User not found")
+        expect(json[:message]).to eq("Couldn't find User with 'id'=-1")
         expect(json[:status]).to eq(404)
       end
     end
