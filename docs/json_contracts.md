@@ -171,21 +171,21 @@ response:
   "data": [
     {
       "type": "questionnaire_submission",
-      "id": 1,
+      "id": "1",
       "attributes": {
-        "recommended_animal_id": 1,
+        "recommended_animal_id": "1",
         "submission_answers": [
           {
-            "id": 1,
+            "id": "1",
             "type": "submission_answer",
             "attributes": {
-              "answer_id": 1
+              "answer_id": "1"
             }
           }
         ],
         "recommended_animal": {
           "type": "recommended_animal",
-          "id": 1,
+          "id": "1",
           "attributes": {
             "type": "dachshund",
             "photo_url": "https://photos.com/dachshund"
