@@ -15,7 +15,7 @@ class User < ApplicationRecord
   end
 
   private
-  def parse_json(json_request_body)
+  def self.parse_json(json_request_body)
     JSON.parse(json_request_body)
   end
 end
