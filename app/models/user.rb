@@ -6,6 +6,11 @@ class User < ApplicationRecord
   def self.find_by_user_by_username(json_request_body)
     parsed_incoming_data = parse_json(json_request_body)
     username = parsed_incoming_data["username"]
+
+    if username.blank?
+      return :missing_username
+    end
+
     find_by(username: username)
   end
 
