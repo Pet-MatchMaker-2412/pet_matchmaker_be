@@ -20,8 +20,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
 
         expect(json[:data].count).to eq(3)
         json[:data].each do |submission|
-          expect(submission).to have_key(:id)
-          expect(submission).to have_key(:type)
+          expect(submission[:id]).to be_a String
           expect(submission[:type]).to eq("questionnaire_submission")
 
           attributes = submission[:attributes]
@@ -60,6 +59,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
       questions.each do |q|
         create_list(:answer, 4, question: q)
       end
+      create(:recommended_animal)
     end
 
     context "with valid request" do
@@ -75,8 +75,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
         expect(response).to have_http_status(:ok)
         json = JSON.parse(response.body, symbolize_names: true)
 
-        expect(json[:data]).to have_key(:id)
-        expect(json[:data]).to have_key(:type)
+        expect(json[:data][:id]).to be_a String
         expect(json[:data][:type]).to eq("questionnaire_submission")
 
         attributes = json[:data][:attributes]
