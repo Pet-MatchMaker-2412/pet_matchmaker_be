@@ -22,5 +22,26 @@ RSpec.describe User, type: :model do
         expect(result).to eq(user)
       end
     end
+
+    context 'the username is missing' do
+      it 'returns :missing_username' do
+        result = User.find_user_by_username(missing_username_json)
+        expect(result).to eq(:missing_username)
+      end
+    end
+
+    context 'when username is not found' do
+      it 'returns nil' do
+        result = User.find_user_by_username({ "username" => "non_existent_user" }.to_json)
+        expect(result).to be_nil
+      end
+    end
+
+    context 'the JSON is invalid' do
+      it 'returns :missing_username' do
+        result = User.find_user_by_username(invalid_json)
+        expect(result).to eq(:missing_username)
+      end
+    end
   end
 end

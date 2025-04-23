@@ -12,6 +12,8 @@ class User < ApplicationRecord
     end
 
     find_by(username: username)
+    rescue JSON::ParserError
+      :missing_username
   end
 
   private
