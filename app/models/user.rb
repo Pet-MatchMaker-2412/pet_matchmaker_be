@@ -14,6 +14,7 @@ class User < ApplicationRecord
     find_by(username: username)
   end
 
+  private
   def parse_json(json_request_body)
     JSON.parse(json_request_body)
   end
