@@ -139,6 +139,52 @@ response:
     "type": "questionnaire_submission",
     "id": "1",
     "attributes": {
+      "saved": false,
+      "submission_answers": {
+        "data": [
+          {
+            "id": "1",
+            "type": "submission_answer",
+            "attributes": {
+              "text": "answer"
+            }
+          }
+        ]
+      },
+      "recommended_animal": {
+        "data": {
+          "type": "recommended_animal",
+          "id": "1",
+          "attributes": {
+            "animal_type": "dachshund",
+            "photo_url": "https://photos.com/dachshund"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### PATCH /api/v1/users/:user_id/questionnaire_submissions/:id
+
+body:
+
+```json
+{
+  "saved": true
+}
+```
+
+response:
+
+```json
+{
+  "data": {
+    "type": "questionnaire_submission",
+    "id": "1",
+    "attributes": {
+      "saved": true,
       "submission_answers": {
         "data": [
           {
@@ -176,6 +222,7 @@ response:
       "type": "questionnaire_submission",
       "id": "1",
       "attributes": {
+        "saved": true,
         "submission_answers": {
           "data": [
             {
