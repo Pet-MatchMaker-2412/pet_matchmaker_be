@@ -145,7 +145,7 @@ response:
             "id": "1",
             "type": "submission_answer",
             "attributes": {
-              "answer_id": "1"
+              "text": "answer"
             }
           }
         ]
