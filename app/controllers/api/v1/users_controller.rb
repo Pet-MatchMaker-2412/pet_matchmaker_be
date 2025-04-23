@@ -8,6 +8,17 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def index 
+    user = User.find_by_user_by_username(request.body.read)
+    if user == :missing_username
+      render json: ErrorSerializer.format_error(ErrorMessage.new("Username is required", 422)), status: :unprocessable_entity
+    elsif user == nil
+      render json: ErrorSerializer.format_error(ErrorMessage.new("User not found", 404)), status: :not_found
+    else 
+      render json: UserSerializer.new(user), status: :ok
+    end
+  end
+
   private
 
   def user_params
