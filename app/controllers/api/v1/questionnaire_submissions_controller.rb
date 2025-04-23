@@ -36,6 +36,7 @@ class Api::V1::QuestionnaireSubmissionsController < ApplicationController
       target = answer_id_arrays.find do |id_array|
         id_array.include?(id)
       end
+      return false if target.nil?
 
       answer_id_arrays.delete(target)
     end
