@@ -120,7 +120,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
         json = JSON.parse(response.body, symbolize_names: true)
 
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(json[:message]).to eq("Answer IDs can't be blank")
+        expect(json[:message]).to eq("param is missing or the value is empty: answer_ids")
         expect(json[:status]).to eq(422)
       end
 
