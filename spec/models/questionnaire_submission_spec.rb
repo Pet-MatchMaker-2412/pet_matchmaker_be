@@ -11,7 +11,9 @@ RSpec.describe QuestionnaireSubmission, type: :model do
     let(:submission) { described_class.new }
 
     it "#add_answers" do
-      submission.add_answers(create_list(:answer, 10))
+      answer_ids = create_list(:answer, 10).map { |a| a.id }
+
+      submission.add_answers(answer_ids)
 
       expect(submission.submission_answers.length).to eq(10)
     end
