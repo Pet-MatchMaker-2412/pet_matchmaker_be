@@ -9,7 +9,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def index 
-    user = User.find_by_user_by_username(request.body.read)
+    user = User.find_user_by_username(request.body.read)
     if user == :missing_username
       render json: ErrorSerializer.format_error(ErrorMessage.new("Username is required", 422)), status: :unprocessable_entity
     elsif user == nil
