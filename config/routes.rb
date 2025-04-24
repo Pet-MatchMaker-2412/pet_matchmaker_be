@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create, :index] do
-        resources :questionnaire_submissions, only: :index
+        resources :questionnaire_submissions, only: [:create, :index]
       end
       resources :petfinder_animals, only: :index
       resources :questions, only: :index
