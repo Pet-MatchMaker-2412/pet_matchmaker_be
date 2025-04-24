@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:create, :index] do
         resources :questionnaire_submissions, only: [:create, :index]
+        patch "questionnaire_submissions/:id", to: "api/v1/questionnaire_submissions#update"
       end
       resources :petfinder_animals, only: :index
       resources :questions, only: :index
