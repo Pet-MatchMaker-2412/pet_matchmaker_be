@@ -27,6 +27,8 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
           attributes = submission[:attributes]
 
           expect(attributes[:submission_answers][:data].count).to eq(3)
+          expect(attributes).to have_key(:saved)
+          expect(attributes[:saved]).to eq(false)
           attributes[:submission_answers][:data].each do |answer|
             expect(answer[:id]).to be_a String
             expect(answer[:type]).to eq("submission_answer")

@@ -1,6 +1,7 @@
 class QuestionnaireSubmissionSerializer
   include JSONAPI::Serializer
   attributes :user_id
+  attributes :saved
 
   attribute :submission_answers do |submission|
     SubmissionAnswerSerializer.new(submission.submission_answers)
