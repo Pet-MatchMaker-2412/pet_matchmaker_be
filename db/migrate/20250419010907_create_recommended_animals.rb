@@ -5,6 +5,7 @@ class CreateRecommendedAnimals < ActiveRecord::Migration[7.1]
       t.string :petf_type, null: false
       t.string :petf_breed
       t.string :photo_url, null: false
+      t.string :description
       
       t.timestamps
     end
