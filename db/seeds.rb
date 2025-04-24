@@ -176,4 +176,25 @@ a10_d.recommended_animals_weights.find_or_create_by!(recommended_animal: small_m
 a10_d.recommended_animals_weights.find_or_create_by!(recommended_animal: basset_hound, weight: 0.16)
 a10_d.recommended_animals_weights.find_or_create_by!(recommended_animal: corgi, weight: 0.16)
 
+
+user = User.find_or_create_by!(username: "drdoolittle")
+
+animal = RecommendedAnimal.order("RANDOM()").first
+
+submission = QuestionnaireSubmission.create!(
+  user: user,
+  recommended_animal: animal
+)
+
+answers = Question.all.map { |question| question.answers.sample }
+
+answers.each do |answer|
+  SubmissionAnswer.create!(
+    questionnaire_submission: submission,
+    answer: answer
+  )
+end
+
+puts "Mock submission created for #{user.username} with #{answers.count} answers."
+
 puts "I am seeded 🌱 PetFinders!"
