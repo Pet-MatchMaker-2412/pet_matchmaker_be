@@ -190,6 +190,18 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
         expect(json[:status]).to eq(404)
       end
 
+      it "returns an error for questionnaire submission not belonging to user" do
+        new_submission = create(:questionnaire_submission)
+
+        patch "/api/v1/users/#{user.id}/questionnaire_submissions/#{new_submission.id}", params: params, as: :json
+
+        json = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to have_http_status(:not_found)
+        expect(json[:message]).to eq("Couldn't find QuestionnaireSubmission with 'id'=#{new_submission.id} under 'user_id'=#{user.id}")
+        expect(json[:status]).to eq(404)
+      end
+
       it "returns an error for missing saved param" do
         params = {}
 
