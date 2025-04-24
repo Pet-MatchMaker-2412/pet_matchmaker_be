@@ -157,7 +157,8 @@ response:
           "id": "1",
           "attributes": {
             "animal_type": "dachshund",
-            "photo_url": "https://photos.com/dachshund"
+            "photo_url": "https://photos.com/dachshund",
+            "description": "description"
           }
         }
       }
@@ -202,7 +203,8 @@ response:
           "id": "1",
           "attributes": {
             "animal_type": "dachshund",
-            "photo_url": "https://photos.com/dachshund"
+            "photo_url": "https://photos.com/dachshund",
+            "description": "description"
           }
         }
       }
@@ -240,7 +242,8 @@ response:
             "id": "1",
             "attributes": {
               "animal_type": "dachshund",
-              "photo_url": "https://photos.com/dachshund"
+              "photo_url": "https://photos.com/dachshund",
+              "description": "description"
             }
           }
         }
