@@ -15,9 +15,9 @@ class Api::V1::PetfinderAnimalsController < ApplicationController
       return
     end
 
-    RecommendedAnimal.find(animal_params[:recommended_animal_id])
+    animal = RecommendedAnimal.find(animal_params[:recommended_animal_id])
 
-    render json: PetfinderAnimalSerializer.new(PetfinderAnimal.mock)
+    render json: PetfinderAnimalSerializer.new(PetfinderAnimal.get_animals(animal, animal_params[:zipcode]))
   end
 
   private

@@ -27,12 +27,20 @@ class PetfinderAnimal
     @species = params[:species]
     @city = params[:contact][:address][:city]
     @state = params[:contact][:address][:state]
-    @description = params[:description]
+    @description = if params[:description]
+      params[:description]
+    else
+      ""
+    end
     @email = params[:contact][:email]
   end
 
-  def self.mock
-    data = JSON.parse(File.read("spec/fixtures/petfinder_animals.json"), symbolize_names: true)
+  def self.get_animals(recommended_animal, zip_code)
+    breed = recommended_animal.petf_breed
+    type = recommended_animal.petf_type
+
+    data = PetfinderGateway.petfinder_search(type, breed, zip_code)
+
     data[:animals].map do |animal|
       new(animal)
     end
