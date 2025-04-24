@@ -41,50 +41,44 @@ RSpec.describe "Users API", type: :request do
         json = JSON.parse(response.body, symbolize_names: true)
 
         expect(response).to have_http_status(:unprocessable_entity)
-        expect(json[:message]).to eq("Username can't be blank")
+        expect(json[:message]).to eq("param is missing or the value is empty: username")
         expect(json[:status]).to eq(422)
       end
     end
   end
 
-  describe "GET /api/v1/users" do
-    let!(:user) { create(:user, username: "test_user") }
-    let(:valid_json) { { "username" => "test_user" }.to_json }
-    let(:missing_username_json) { { "username" => "" }.to_json }
-    let(:invalid_json) { "not_valid_json" }
-    let(:nonexistent_json) { { "username" => "ghost_user" }.to_json }
-    let(:headers) { { "CONTENT_TYPE" => "application/json" } }
+  describe "GET User Endpoint" do
+    let(:user) { create(:user) }
+    let(:params) { {username: user.username} }
 
-    context "when valid username is provided" do
-      it "returns the user and 200 OK" do
-        stub_request_body(valid_json)
-
-        get api_v1_users_path, headers: headers
+    context "with valid request" do
+      it "returns 200 OK and provides expected fields" do
+        get api_v1_users_path, params: params
 
         expect(response).to have_http_status(:ok)
         json = JSON.parse(response.body, symbolize_names: true)
-        expect(json[:data][:attributes][:username]).to eq("test_user")
+        expect(json[:data][:type]).to eq("user")
+        expect(json[:data][:id]).to eq(user.id.to_s)
+        expect(json[:data][:attributes][:username]).to eq(user.username)
       end
     end
 
-    context "when username is missing" do
-      it "returns 422 Unprocessable Entity" do
-        stub_request_body(missing_username_json)
+    context "with invalid request" do
+      it "returns an error for missing username" do
+        params[:username] = nil
 
-        get api_v1_users_path, headers: headers
+        get api_v1_users_path, params: params
 
         expect(response).to have_http_status(:unprocessable_entity)
         json = JSON.parse(response.body, symbolize_names: true)
-        expect(json[:message]).to eq("Username is required")
+        expect(json[:message]).to eq("param is missing or the value is empty: username")
         expect(json[:status]).to eq(422)
       end
-    end
 
-    context "when user is not found" do
       it "returns 404 Not Found" do
-        stub_request_body(nonexistent_json)
+        params[:username] = "joe_biden"
 
-        get api_v1_users_path, headers: headers
+        get api_v1_users_path, params: params
 
         expect(response).to have_http_status(:not_found)
         json = JSON.parse(response.body, symbolize_names: true)
@@ -93,29 +87,15 @@ RSpec.describe "Users API", type: :request do
       end
     end
 
-    context "when invalid JSON is provided" do
-      it "returns 422 Unprocessable Entity" do
-        stub_request_body(invalid_json)
+    it "returns an error for empty username" do
+      params[:username] = ""
 
-        get api_v1_users_path, headers: headers
+      get api_v1_users_path, params: params
 
-        expect(response).to have_http_status(:unprocessable_entity)
-        json = JSON.parse(response.body, symbolize_names: true)
-        expect(json[:message]).to eq("Username is required")
-        expect(json[:status]).to eq(422)
-      end
+      expect(response).to have_http_status(:unprocessable_entity)
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(json[:message]).to eq("param is missing or the value is empty: username")
+      expect(json[:status]).to eq(422)
     end
   end
-
-  
-  private
-  def stub_request_body(json_string)
-    # This mocks the raw JSON body of a GET request
-    # Rails does not provide request.body for GET requests with params,
-    # so I'm manually stubbing it to simulate the frontend sending JSON in the request body.
-    allow_any_instance_of(ActionDispatch::Request).to receive(:body).and_return(StringIO.new(json_string))
-  end
 end
-
-
-
