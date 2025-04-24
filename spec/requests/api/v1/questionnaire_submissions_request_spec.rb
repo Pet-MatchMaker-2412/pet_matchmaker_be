@@ -6,7 +6,8 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
   describe "Get Questionnaire Submissions Endpoint" do
     context "with valid request" do
       before do
-        submissions = create_list(:questionnaire_submission, 3, user: user)
+        create_list(:questionnaire_submission, 3, user: user)
+        submissions = create_list(:questionnaire_submission, 3, user: user, saved: true)
         submissions.each do |submission|
           create_list(:submission_answer, 3, questionnaire_submission: submission)
         end
@@ -25,9 +26,8 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
 
           attributes = submission[:attributes]
 
+          expect(attributes[:saved]).to be true
           expect(attributes[:submission_answers][:data].count).to eq(3)
-          expect(attributes).to have_key(:saved)
-          expect(attributes[:saved]).to eq(false)
           attributes[:submission_answers][:data].each do |answer|
             expect(answer[:id]).to be_a String
             expect(answer[:type]).to eq("submission_answer")
@@ -82,6 +82,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
 
         attributes = json[:data][:attributes]
 
+        expect(attributes[:saved]).to be false
         expect(attributes[:submission_answers][:data].count).to eq(10)
         attributes[:submission_answers][:data].each do |answer|
           expect(answer[:id]).to be_a String
@@ -149,7 +150,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
 
     context "with valid request" do
       it "returns a list of the user's questionnaire submissions" do
-        patch "/ap1/v1/users/#{user.id}/questionnaire_submission/#{submission.id}", params: params, as: :json
+        patch "/api/v1/users/#{user.id}/questionnaire_submissions/#{submission.id}", params: params, as: :json
 
         expect(response).to have_http_status(:ok)
         json = JSON.parse(response.body, symbolize_names: true)
@@ -170,7 +171,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
 
     context "with invalid request" do
       it "returns an error for invalid user" do
-        patch "/ap1/v1/users/-1/questionnaire_submission/#{submission.id}", params: params, as: :json
+        patch "/api/v1/users/-1/questionnaire_submissions/#{submission.id}", params: params, as: :json
 
         json = JSON.parse(response.body, symbolize_names: true)
 
@@ -180,7 +181,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
       end
 
       it "returns an error for invalid questionnaire submission" do
-        patch "/ap1/v1/users/#{user.id}/questionnaire_submission/-1", params: params, as: :json
+        patch "/api/v1/users/#{user.id}/questionnaire_submissions/-1", params: params, as: :json
 
         json = JSON.parse(response.body, symbolize_names: true)
 
@@ -192,7 +193,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
       it "returns an error for missing saved param" do
         params = {}
 
-        patch "/ap1/v1/users/#{user.id}/questionnaire_submission/#{submission.id}", params: params, as: :json
+        patch "/api/v1/users/#{user.id}/questionnaire_submissions/#{submission.id}", params: params, as: :json
 
         json = JSON.parse(response.body, symbolize_names: true)
 
@@ -204,7 +205,7 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
       it "returns an error for malformed saved param" do
         params = {saved: "flounder"}
 
-        patch "/ap1/v1/users/#{user.id}/questionnaire_submission/#{submission.id}", params: params, as: :json
+        patch "/api/v1/users/#{user.id}/questionnaire_submissions/#{submission.id}", params: params, as: :json
 
         json = JSON.parse(response.body, symbolize_names: true)
 
