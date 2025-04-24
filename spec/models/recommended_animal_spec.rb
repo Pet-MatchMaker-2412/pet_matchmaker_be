@@ -17,9 +17,9 @@ RSpec.describe RecommendedAnimal, type: :model do
       DatabaseCleaner.clean_with(:truncation)
       load Rails.root.join("db/seeds.rb").to_s
 
-      submission = create(:questionnaire_submission, recommended_animal: nil)
+      submission = build(:questionnaire_submission, recommended_animal: nil)
       submission_answers = [1, 4, 7, 10, 16, 19, 24, 25, 28, 32].map do |answer_id|
-        create(:submission_answer, questionnaire_submission: submission, answer: Answer.find(answer_id))
+        build(:submission_answer, questionnaire_submission: submission, answer: Answer.find(answer_id))
       end
 
       golden = described_class.find_by(animal_type: "Golden Retriever")
