@@ -12,11 +12,9 @@ class RecommendedAnimal < ApplicationRecord
 
     RecommendedAnimal.all.max_by do |animal|
       animal.recommended_animals_weights.sum do |db_weight|
-        if submission_answers_weights.include?(db_weight)
-          db_weight.weight
-        else
-          0
-        end
+        next 0 unless submission_answers_weights.include?(db_weight)
+
+        db_weight.weight
       end
     end
   end
