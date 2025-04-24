@@ -8,11 +8,11 @@ class RecommendedAnimal < ApplicationRecord
   def self.calculate_animal(submission_answers)
     RecommendedAnimal.all.max_by do |animal|
       animal.recommended_animals_weights.sum do |db_weight|
-        if submission_answers.map do |sub_answer|
+        submission_answers_weights = submission_answers.map do |sub_answer|
           sub_answer.recommended_animals_weights
-        end.any? do |weight_array|
-          weight_array.include?(db_weight)
         end
+
+        if submission_answers_weights.any? { |weight_array| weight_array.include?(db_weight) }
           db_weight.weight
         else
           0
