@@ -56,16 +56,11 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
   end
 
   describe "Post Questionnaire Submissions Endpoint" do
-    before do
-      questions = create_list(:question, 10)
-      questions.each do |q|
-        create_list(:answer, 4, question: q)
-      end
-      create(:recommended_animal)
-    end
-
     context "with valid request" do
       it "returns a list of the user's questionnaire submissions" do
+        DatabaseCleaner.clean_with(:truncation)
+        load Rails.root.join("db/seeds.rb").to_s
+
         params = {
           answer_ids: Question.all.map do |q|
             q.answers.sample.id
@@ -98,6 +93,14 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
     end
 
     context "with invalid request" do
+      before do
+        questions = create_list(:question, 10)
+        questions.each do |q|
+          create_list(:answer, 4, question: q)
+        end
+        create(:recommended_animal)
+      end
+
       it "returns an error for invalid user" do
         params = {
           answer_ids: Question.all.map do |q|

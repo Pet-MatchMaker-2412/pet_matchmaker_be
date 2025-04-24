@@ -11,7 +11,7 @@ class Api::V1::QuestionnaireSubmissionsController < ApplicationController
     if valid_answer_ids?
       submission = QuestionnaireSubmission.new(user: user)
       submission.add_answers(submission_params)
-      submission.recommended_animal = RecommendedAnimal.all.sample
+      submission.recommended_animal = RecommendedAnimal.calculate_animal(submission.submission_answers)
       submission.save
       render json: QuestionnaireSubmissionSerializer.new(submission), status: :ok
     else

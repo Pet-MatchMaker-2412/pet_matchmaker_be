@@ -65,4 +65,5 @@ group :test do
   gem "simplecov", require: false
   gem "webmock"
   gem "vcr"
+  gem "database_cleaner-active_record"
 end
