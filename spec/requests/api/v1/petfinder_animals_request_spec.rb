@@ -3,18 +3,18 @@ require "rails_helper"
 RSpec.describe "Petfinder Animals API", type: :request do
   describe "Get Petfinder Animals Endpoint" do
     before do
-      create(:recommended_animal)
+      create(:recommended_animal, petf_type: "Cat", petf_breed: nil)
     end
 
     let(:animal_params) do
       {
-        recommended_animal_id: RecommendedAnimal.all.sample.id,
+        recommended_animal_id: RecommendedAnimal.last.id,
         zipcode: "07097"
       }
     end
 
     context "with valid request" do
-      it "returns 200 and provides expected fields" do
+      it "returns 200 and provides expected fields", :vcr do
         get api_v1_petfinder_animals_path, params: animal_params
 
         expect(response).to have_http_status(:ok)
