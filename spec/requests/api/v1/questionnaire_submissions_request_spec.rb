@@ -142,4 +142,76 @@ RSpec.describe "Questionnaire Submissions API", type: :request do
       end
     end
   end
+
+  describe "Patch Questionnaire Submissions Endpoint" do
+    let(:submission) { create(:questionnaire_submission, user: user) }
+    let(:params) { {saved: true} }
+
+    context "with valid request" do
+      it "returns a list of the user's questionnaire submissions" do
+        patch "/ap1/v1/users/#{user.id}/questionnaire_submission/#{submission.id}", params: params, as: :json
+
+        expect(response).to have_http_status(:ok)
+        json = JSON.parse(response.body, symbolize_names: true)
+
+        expect(json[:data][:id]).to be_a String
+        expect(json[:data][:type]).to eq("questionnaire_submission")
+
+        attributes = json[:data][:attributes]
+
+        expect(attributes[:saved]).to be true
+
+        expect(attributes[:recommended_animal][:data][:type]).to eq("recommended_animal")
+        expect(attributes[:recommended_animal][:data][:id]).to be_a String
+        expect(attributes[:recommended_animal][:data][:attributes][:animal_type]).to be_a String
+        expect(attributes[:recommended_animal][:data][:attributes][:photo_url]).to be_a String
+      end
+    end
+
+    context "with invalid request" do
+      it "returns an error for invalid user" do
+        patch "/ap1/v1/users/-1/questionnaire_submission/#{submission.id}", params: params, as: :json
+
+        json = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to have_http_status(:not_found)
+        expect(json[:message]).to eq("Couldn't find User with 'id'=-1")
+        expect(json[:status]).to eq(404)
+      end
+
+      it "returns an error for invalid questionnaire submission" do
+        patch "/ap1/v1/users/#{user.id}/questionnaire_submission/-1", params: params, as: :json
+
+        json = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to have_http_status(:not_found)
+        expect(json[:message]).to eq("Couldn't find QuestionnaireSubmission with 'id'=-1")
+        expect(json[:status]).to eq(404)
+      end
+
+      it "returns an error for missing saved param" do
+        params = {}
+
+        patch "/ap1/v1/users/#{user.id}/questionnaire_submission/#{submission.id}", params: params, as: :json
+
+        json = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(json[:message]).to eq("param is missing or the value is empty: saved")
+        expect(json[:status]).to eq(422)
+      end
+
+      it "returns an error for malformed saved param" do
+        params = {saved: "flounder"}
+
+        patch "/ap1/v1/users/#{user.id}/questionnaire_submission/#{submission.id}", params: params, as: :json
+
+        json = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(json[:message]).to eq("Saved param must be true or false")
+        expect(json[:status]).to eq(422)
+      end
+    end
+  end
 end
