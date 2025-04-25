@@ -12,14 +12,14 @@ class PetfinderAnimal
     :description,
     :email
 
-  def initialize(params)
+  def initialize(params, recommended_animal)
     @id = params[:id]
     @type = "petfinder_animal"
     @name = params[:name]
     @photo_url = if params[:primary_photo_cropped]
       params[:primary_photo_cropped][:full]
     else
-      ""
+      recommended_animal.photo_url
     end
     @age = params[:age]
     @gender = params[:gender]
@@ -27,11 +27,7 @@ class PetfinderAnimal
     @species = params[:species]
     @city = params[:contact][:address][:city]
     @state = params[:contact][:address][:state]
-    @description = if params[:description]
-      params[:description]
-    else
-      ""
-    end
+    @description = params[:description] || recommended_animal.description
     @email = params[:contact][:email]
   end
 
@@ -42,7 +38,7 @@ class PetfinderAnimal
     data = PetfinderGateway.petfinder_search(type, breed, zip_code)
 
     data[:animals].map do |animal|
-      new(animal)
+      new(animal, recommended_animal)
     end
   end
 end
