@@ -26,7 +26,9 @@ class Api::V1::QuestionnaireSubmissionsController < ApplicationController
     if submission.user.id == user.id
       if update_params == true || update_params == false
         submission.saved = update_params
-        render json: QuestionnaireSubmissionSerializer.new(submission), status: :ok
+        if submission.save
+          render json: QuestionnaireSubmissionSerializer.new(submission), status: :ok
+        end
       else
         render json: ErrorSerializer.format_error(ErrorMessage.new("Saved param must be true or false", 422)), status: :unprocessable_entity
       end
