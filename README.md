@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to the backend repo for the Pet MatchMaker website! This repo holds the code responsible for running the database and exposing the API endpoints described in our [OpenAPI Documentation.](https://pet-matchmaker-2412.github.io/pet_matchmaker_api_docs/) Check out our frontend repo [here!](https://github.com/Pet-MatchMaker-2412/pet_matchmaker_fe)
+Welcome to the backend repo for the Pet MatchMaker website! This repo holds the code responsible for running the database and exposing the API endpoints described in our [OpenAPI Documentation.](https://pet-matchmaker-2412.github.io/pet_matchmaker_api_docs/) Check out our [deployed frontend](https://pet-matchmaker-fe.vercel.app/) and it's [repo!](https://github.com/Pet-MatchMaker-2412/pet_matchmaker_fe)
 
 ### Notable Technologies
 
