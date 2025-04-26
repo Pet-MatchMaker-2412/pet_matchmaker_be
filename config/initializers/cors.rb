@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "localhost:5173", "https://pet-matchmaker-2412.github.io", "https://pet-matchmaker-fe.vercel.app/"
+    origins "localhost:5173", "https://pet-matchmaker-2412.github.io", "https://pet-matchmaker-fe.vercel.app"
 
     resource "*",
       headers: :any,
