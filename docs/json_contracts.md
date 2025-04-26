@@ -4,16 +4,7 @@
 
 ### Recommended Animals
 
-#### GET /api/v1/petfinder_animals
-
-request:
-
-```json
-{
-  "recommended_animal_id": 1,
-  "zipcode": "07097"
-}
-```
+#### GET /api/v1/petfinder_animals?recommended_animal_id=1&zipcode=07097
 
 response:
 
